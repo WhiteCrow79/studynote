@@ -1,0 +1,68 @@
+EC2 : Elastic Computer Cloud
+
+1.탄력적 IP 생성
+2.인스턴스 접근을 위한 pem키 사용
+3.리눅스설정
+    3.1 java 설치
+        -sudo yum install -y java-1.9.0-openjdk-devel.x86_64 > 설치
+        -sudo /usr/sbin/alternatives --config java > 변경
+        -sudu yum remove java-1.7.0-openjdk
+    3.2 타임존 변경
+        -sudo rm /etc/localtime
+        -sudo ln -s /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+        -date
+    3.3 Hostname 변경
+        -sudo vim /etc/sysconfig/network
+        -sudo reboot
+        -sudu vim /etc/hosts
+        -127.0.0.1 [hostname]
+        -curl [hostname]
+
+*참조
+https://velog.io/@swchoi0329/AWS-%EC%84%9C%EB%B2%84-%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95
+
+AWS RDS
+
+1.MariaDB 선택
+2.RDS 운영환경에 맞는 파라미터 설정
+    -타임존
+    -Character Set
+    -Max Connection
+3.EC2와 RDS 간에 접근 가능 하도록
+    -내 PC의 IP를 등록
+
+4.intelliJ plugin 으로 접속확인 : database plugin
+
+5.접속 후 shema생성
+    -create database whitecrow;
+
+6.character set 확인 후 변경
+    -ALTER DATABASE whitecrow
+     CHARACTER SET = 'utf8mb4'
+     COLLATE = 'utf8mb4_general_ci';
+
+7.test 테이블 생성
+    CREATE TABLE test (
+    id bigint(20) NOT NULL AUTO_INCREMENT,
+    content varchar(255) DEFAULT NULL,
+    PRIMARY KEY (id)
+    ) ENGINE=InnoDB;
+
+8.ec2에서 접속
+    8.1 mysql cli 설치
+        -sudo yum install mysql
+    8.2 RDS 접속
+        mysql -u whitecorw -p -h [endpoint]  
+
+
+*참조
+https://velog.io/@swchoi0329/AWS-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95
+
+EC2서버 배포
+
+
+
+
+
+
+
