@@ -60,9 +60,87 @@ https://velog.io/@swchoi0329/AWS-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%E
 
 EC2서버 배포
 
+1.ec2에 git 설치 및 빌드
+    sudo yum install git
+    git clone [git 주소]
+    ./gradlew test >> 권한이 없다면 chmod +x ./gradlew >> test쪽 구현을 안해서 failed ^^
+2.수정 후 새버전을 받아야 하는 귀찮음
+3.배포 스크립트 만들기
+    #! /bin/bash
 
+    REPOSITORY=/home/ec2-user/app/step1
+    PROJECT_NAME=SpringBootWebService
 
+    cd $REPOSITORY/$PROJECT_NAME/
 
+    echo "> Git Pull"
 
+    git pull
 
+    echo "> Start Building Project"
 
+    ./gradlew build
+
+    echo "> Change Directory to Test"
+
+    cd $REPOSITORY
+
+    echo "> Copy Build Files"
+
+    cp $REPOSITORY/$PROJECT_NAME/build/libs/*.jar $REPOSITORY/
+
+    echo "> Check Current Application Pids"
+
+    # pgrep : process id만 추출
+    # -f : process 이름으로 검색
+    CURRENT_PID=$(pgrep -f ${PROJECT_NAME}*.jar)
+
+    echo "> Current Application Pids : $CURRENT_PID"
+
+    if [ -z "$CURRENT_PID" ] ; then
+        echo "> 현재 구동중인 애플리케이션이 없으므로 종료하지 않습니다."
+
+    else
+        echo "> kill -15 $CURRENT_PID"
+        kill -15 $CURRENT_PID
+        sleep 5
+    fi
+
+    echo "> Deploy New Application"
+
+    # 새로 실행할 jar파일 찾아서
+    # 여러 jar파일 중 가장 마지막(최신) 파일을 변수에 저장
+    JAR_NAME=$(ls -tr $REPOSITORY/ | grep *.jar | tail -n 1)
+
+    echo "> JAR NAME : JAR_NAME"
+
+    # nohup으로 파일 실행
+    # application-oauth.properties 파일 위치 설정
+    nohup java -jar \
+            -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app/application-oauth.yml \
+            $REPOSITORY/$JAR_NAME 2>&1 &
+        
+
+    4.실행권한 추가 및 실행
+        chmod +x ./deploy.sh
+        ./deploy.sh
+
+    5.외부 Security 파일 등록
+
+        application-oauth.yml 작성
+
+    6.ec2에 db설정
+
+        spring.jpa.hibernate.ddl-auto=none
+
+        spring.datasource.url=jdbc:mariadb://rds주소:포트명(기본은 3306)/database명
+        spring.datasource.username=db계정
+        spring.datasource.password=db계정 비밀번호
+        spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+
+    7.
+        netstat -tnlp | grep "8080"
+        kill -9 [processid]           
+
+    8.
+        http://ec2-15-164-140-225.ap-northeast-2.compute.amazonaws.com:8080/
