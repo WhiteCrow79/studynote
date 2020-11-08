@@ -143,4 +143,21 @@ EC2서버 배포
         kill -9 [processid]           
 
     8.
-        http://ec2-15-164-140-225.ap-northeast-2.compute.amazonaws.com:8080/
+        http://ec2-15-164-140-225.ap-northeast-2.compute.amazonaws.com:8080/ >> ec2 주소등록
+
+
+
+AWS Key 발급
+
+1.IAM(Identity and Access Management)    
+    -사용자 이름 생성
+    -권한 추가 AmazonS3FullAccess, AWSCodeDeployFullAccess
+
+2.TravisCI 환경 변수 설정
+    -AWS_ACCESS_KEY, AWS_SECRET_KEY 등록
+
+3.S3버킷 생성
+    -
+
+
+--334 page 시작

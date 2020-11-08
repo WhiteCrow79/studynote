@@ -1,0 +1,16 @@
+구글/네이버 oAuth API 등록
+
+-google web console
+
+http://console.cloud.google.com/home/dashboard >> oAuth 사용자 인증
+
+1.도메인 추가
+2.URI 등록
+
+-naver 개발자 센터
+
+https://developers.naver.com/apps/#/myapps
+
+1.도메인 등록
+2.http://localhost:8080/login/oauth2/code/naver callback URL 등록
+
