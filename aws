@@ -149,6 +149,8 @@ EC2서버 배포
 
 AWS Key 발급
 
+참조 : https://velog.io/@swchoi0329/Travis-CI-%EB%B0%B0%ED%8F%AC-%EC%9E%90%EB%8F%99%ED%99%94
+
 1.IAM(Identity and Access Management)    
     -사용자 이름 생성
     -권한 추가 AmazonS3FullAccess, AWSCodeDeployFullAccess
@@ -157,7 +159,17 @@ AWS Key 발급
     -AWS_ACCESS_KEY, AWS_SECRET_KEY 등록
 
 3.S3버킷 생성
-    -
 
+4.EC2에 IAM 역할 추가
 
---334 page 시작
+5.codedeploy 에이전트 설치
+aws s3 cp s3://aws-codedeploy-ap-northeast-2/latest/install . --region ap-northeast-2
+chmod +x ./install
+sudo ./install auto
+sudo service codedeploy-agent status
+
+6.codedeploy를 위한 권한 생성
+    -codedeploy IAM 역할 추가
+    -codedeploy group 생성
+
+7.Travis CI, S3, codedeploy 연동
