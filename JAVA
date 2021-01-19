@@ -1,0 +1,44 @@
+-Java 소개
+
+write once, Run anywhere
+jdk : java development kit
+
+-Java의 동작 원리
+
+source, code, language : 원천, 약속
+application, program : 결과
+Java Source Code(.java) > Compile > Java Application(.class) > Run > Java Virtual Machine > Run > Computer
+
+-Java로 할 수 있는 것
+
+IOT 사물인터뎃 : 라즈베리파이(GPIO핀에 전기를 흐르게 함)
+android
+
+-programing > 자동화를 위함
+
+-debug
+eclipse기준
+stepover : F6, resume : F8(breakpoint), stepinto : F5 >> method, stepreturn : F7
+
+-입력과출력
+
+input - program - output
+
+Runconfigration(eclipse기준)
+arguments : 인자
+parameter : 매개변수
+
+ex) 'APT''15.0'
+String[] args >> args[0] : APT, args[1] : 15.0
+
+-직접컴파일하고 실행하기
+javac는 어디에 있을까? java안에 bin(binary : 실행파일 폴더에 있음)
+
+pwd : Print Working Directory
+cd : Change Directory
+mac 기준 환경변수 set
+echo $PATH
+~/.bash_profile
+export PATH=$PATH:
+javac Program.java
+java Program or java -cp "." Program
