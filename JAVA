@@ -40,5 +40,14 @@ mac 기준 환경변수 set
 echo $PATH
 ~/.bash_profile
 export PATH=$PATH:
-javac Program.java
-java Program or java -cp "." Program
+javac -cp ".:lib" Program.java
+java Program or java -cp ".:lib" Program
+java Program "APT" 15.0
+
+-자바문서 보는 법
+API(Application Programing Interface) : 조작방법
+
+package : 비슷한 연관성 있는 class를 그룹핑한 것
+class : 서로 연관된 variable 과 method를 그룹핑한 것
+method : 서로 연관된 코드를 그룹핑해서 이름을 붙힌 정리정돈의 상자다.
+instance : 하나의 클래스를 복제해서 서로 다른 데이터의 값과 서로 같은 메소드를 가진 복제본을 만드는 것이다.
