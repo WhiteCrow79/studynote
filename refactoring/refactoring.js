@@ -1,10 +1,8 @@
-//deno는 된다.
-const plays = JSON.parse(Deno.readTextFileSync('./jsonData/plays.json'));
-const invoices = JSON.parse(Deno.readTextFileSync('./jsonData/invoices.json'));
-
-
 function statement(invoices, plays) {
     
+    console.log(invoices);
+    console.log(plays.hamlet);
+
     let totalAmount = 0;
     let volumeCredits = 0;
     let result = `청구 내역 (고객명: ${invoices.customer})\n`;
@@ -14,7 +12,7 @@ function statement(invoices, plays) {
     }).format;
 
     for(let perf of invoices.performances) {
-        const play = plays[perf.playId];
+        const play = plays[perf.playID];
         let thisAmount = 0;
 
         switch(play.type) {
@@ -49,5 +47,31 @@ function statement(invoices, plays) {
     return result;
 
 }
+
+const invoices = 
+{
+    "customer": "BigCo",
+    "performances": [
+        {
+        "playID": "hamlet",
+        "audience": 55
+        },
+        {
+        "playID": "as-like",
+        "audience": 35
+        },
+        {
+        "playID": "othello",
+        "audience": 40
+        }
+    ]
+};
+
+const plays = 
+{
+    "hamlet": {"name": "Hamlet", "type": "tragedy"},
+    "as-like": {"name": "As you Like it", "type": "comedy"},
+    "othello": {"name": "Othello", "type": "tragedy"}
+};
 
 console.log(statement(invoices, plays));
