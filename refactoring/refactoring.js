@@ -7,13 +7,17 @@ function statement(invoices, plays) {
 
     for(let perf of invoice.performances) {
         
-        // 포인트를 적립한다.
-        volumeCredits += volumeCreditsFor(perf);
-
         // 청구 내역을 출력한다.
         result += ` ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience}석)\n`;
         totalAmount += amountFor(perf);
-
+        
+    }
+    
+    for(let perf of invoice.performances) {
+        
+        // 포인트를 적립한다.
+        volumeCredits += volumeCreditsFor(perf);
+        
     }
 
     result += `총액: ${usd(totalAmount)}\n`;
