@@ -35,7 +35,7 @@ function renderHtml(data) {
             `<tr>
                 <td>${perf.play.name}</td>
                 <td>${perf.audience}</td>
-                <td>${usd(perf.amound)}</td>
+                <td>${usd(perf.amount)}</td>
             </tr>\n`;
     }
     result += "</table>\n";
