@@ -178,8 +178,146 @@
   );
   ```
 
-- 변수 이름 바꾸기
-- 변수 캡슐화하기
-- 매개변수 객체 만들기
-- 여러 함수를 클래스로 묶기
-- 단계 쪼개기
+- ### 변수 캡슐화하기(Encapsulate Variable)
+
+  ```javascript
+  let defaultOwnerData = { firstName: "white", lastName: "crow" };
+  export function defaultOwner() {
+    return new Person(defaultOwnerData);
+  }
+  export function setDefaultOwner(arg) {
+    defaultOwnerData = arg;
+  }
+
+  class Person {
+    constructor(data) {
+      this._lastName = data.lastName;
+      this._firstName = data.firstName;
+    }
+    get lastName() {
+      return this._lastName;
+    }
+    get firstName() {
+      return this._firstName;
+    }
+  }
+  ```
+
+- ### 변수 이름 바꾸기(Encapsulate Variable)
+
+  ```javascript
+  let a = height * width;
+  ```
+
+  ```javascript
+  let area = height * width;
+  ```
+
+- ### 매개변수 객체 만들기(Introduce Parameter Object)
+
+  ```javascript
+  const station = {
+    name: "Z81",
+    readings: [
+      { temp: 47, time: "2021-02-18 21:57" },
+      { temp: 53, time: "2021-02-18 22:57" },
+      { temp: 58, time: "2021-02-18 23:57" },
+      { temp: 51, time: "2021-02-18 21:59" },
+    ],
+  };
+
+  function readingsOutsideRange(station, min, max) {
+    return station.readings.filter((r) => r.temp < min || r.temp > max);
+  }
+
+  const alerts = readingsOutsideRange(
+    station,
+    operatingPlan.temperatureFloor,
+    operatingPlan.temperatureCeiling
+  );
+  ```
+
+  ```javascript
+  class NumberRange {
+    constructor(min, max) {
+      this._data = { min: min, max: max };
+    }
+
+    get min() {
+      return this._data.min;
+    }
+    get max() {
+      return this._data.max;
+    }
+
+    contains(arg) {
+      return arg >= this.min && arg <= this.max;
+    }
+  }
+
+  function readingsOutsideRange(station, range) {
+    return station.readings.filter(
+      (r) => !range.contains(r.temp));
+    );
+  }
+
+  const range = new NumberRange(
+    operatingPlan.temperatureFloor,
+    operatingPlan.temperatureCeiling
+  );
+
+  const alert = readingOutsideRange(station, range);
+  ```
+
+- ### 여러 함수를 클래스로 묶기(Combine Functions into Class)
+
+  ```javascript
+  const aReading = acquireReading();
+  const basicChargeAmount = calculateBaseCharge(aReading);
+  const taxableCharge = Math.max(
+    0,
+    basicChargeAmount - taxThreshold(aReading.year)
+  );
+
+  function calculateBaseCharge(aReading) {
+    return baseRate(aReading.month, aReading.year) * aReading.quantity;
+  }
+  ```
+
+  ```javascript
+  class Reading {
+    constructor(data) {
+      this._customer = data.customer;
+      this._quantity = data.quantity;
+      this._month = data.month;
+      this._year = data.year;
+    }
+
+    get customer() {
+      return this._customer;
+    }
+    get quantity() {
+      return this._quantity;
+    }
+    get month() {
+      return this._month;
+    }
+    get year() {
+      return this._year;
+    }
+    get baseCharge() {
+      return baseRate(this.month, this.year) * this.quantity;
+    }
+    get taxableCharge() {
+      Math.max(0, this.baseCharge - taxThreshold(this.year));
+    }
+  }
+
+  const rawReading = acquireReading();
+  const aReading = new Reading(rawReading);
+  //const baseChage = aReading.baseCharge;
+  const taxableCharge = aReading.taxableCharge;
+  ```
+
+- ### 여러 함수를 변환함수로 묶기
+- ### 단계 쪼개기
