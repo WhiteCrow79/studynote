@@ -320,4 +320,81 @@
   ```
 
 - ### 여러 함수를 변환함수로 묶기
+
+  ```javascript
+  const aReading = acquireReading();
+  const basicChargeAmount = calculateBaseCharge(aReading);
+  const taxableCharge = Math.max(
+    0,
+    basicChargeAmount - taxThreshold(aReading.year)
+  );
+
+  function calculateBaseCharge(aReading) {
+    return baseRate(aReading.month, aReading.year) * aReading.quantity;
+  }
+  ```
+
+  ```javascript
+  function enrichReading(original) {
+    const result = _.cloneDeep(original); //lodash 라이브러리
+    result.baseCharge = calculateBaseCharge(result);
+    result.taxableCharge = Math.max(
+      0,
+      result.baseCharge - taxThreshold(result.year)
+    );
+    return result;
+  }
+  const rawReading = acquireReading();
+  const aReading = enrichReading(rawReading);
+  //const basicChargeAmount = aReading.baseCharge;
+  const taxableCharge = aReading.taxableCharge;
+  ```
+
 - ### 단계 쪼개기
+
+  ```javascript
+  function priceOrder(product, quantity, shippingMethod) {
+    const basePrice = product.basePrice * quantity;
+    const discount =
+      Math.max(quantity - product.discountThreshold, 0) *
+      product.basePrice *
+      product.discountRate;
+    const shippingPerCase =
+      basePrice > shippingMethod.discountThreshold
+        ? shippingMethod.discountedFee
+        : shippingMethod.feePerCase;
+    const shippingCost = quantity * shippingPerCase;
+    const price = basePrice - discount + shippingCost;
+    return price;
+  }
+  ```
+
+  ```javascript
+  function priceOrder(product, quantity, shippingMethod) {
+    const priceData = calculatePricingData(product, quantity);
+    return applyShipping(priceData, shippingMethod);
+  }
+
+  function calculatePricingData(product, quantity) {
+    const basePrice = product.basePrice * quantity;
+    const discount =
+      Math.max(quantity - product.discountThreshold, 0) *
+      product.basePrice *
+      product.discountRate;
+    return {
+      basePrice: basePrice,
+      quantity: quantity,
+      discount: discount,
+    };
+  }
+
+  function applyShipping(priceData, shippingMethod) {
+    const shippingPerCase =
+      priceData.basePrice > shippingMethod.discountThreshold
+        ? shippingMethod.discountedFee
+        : shippingMethod.feePerCase;
+    const shippingCost = priceData.quantity * shippingPerCase;
+    const price = priceData.basePrice - priceData.discount + shippingCost;
+    return price;
+  }
+  ```

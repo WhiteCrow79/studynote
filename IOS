@@ -1,0 +1,6 @@
+-cocoapods 설치
+sudo gem install cocoapods
+ruby를 업데이트 했지만 실패
+구글링 후 sudo gem install -n /usr/local/bin cocoapods >> 실패
+
+그냥 brew 통해 설치
