@@ -1,3 +1,4 @@
+"use strict";
 var UserAccount = /** @class */ (function () {
     function UserAccount(name, age) {
         this.name = name;
