@@ -1,0 +1,11 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.ts",
+    "prestart": "tsc"
+  }
+}
