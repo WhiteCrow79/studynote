@@ -5,7 +5,7 @@
 // producer vs Consumer
 
 // 1. Producer
-// when new Promis is created, the executor runs automatically.
+// when new Promise is created, the executor runs automatically.
 
 const promise = new Promise((resolve, reject) => {
     // network, read files    

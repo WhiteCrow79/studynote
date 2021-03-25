@@ -149,13 +149,16 @@
   ```
 
 - ### 변수 인라인하기(Inline Variable)
+
   ```javascript
   let basePrice = anOrder.basePrice;
   return basePrice > 1000;
   ```
+
   ```javascript
   return anOrder.basePrice > 1000;
   ```
+
 - ### 함수 선언 바꾸기(Change Function Declaration)
 
   ```javascript

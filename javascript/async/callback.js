@@ -4,7 +4,7 @@
 // hoisting >> var, function declaration 자동적으로 제일 위로 올라감
 
 console.log('1');
-setTimeout(() => console.log('2'), 1000);
+setTimeout(() => console.log('2'), 1000); //setTime browser API
 console.log('3');
 
 // Synchronous callback
