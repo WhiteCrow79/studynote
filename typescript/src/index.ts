@@ -43,12 +43,12 @@ let blockchain: Block[] = [genesisBlock];
 
 const getBlockchain = (): Block[] => blockchain;
 
-const getLatestBlock = (): Block => blockchain[blockchain.length - 1];
+const getLastestBlock = (): Block => blockchain[blockchain.length - 1];
 
 const getNewTimeSamp = (): number => Math.round(new Date().getTime() / 1000);
 
 const createNewBlock = (data: string): Block => {
-  const previosBlock: Block = getLatestBlock();
+  const previosBlock: Block = getLastestBlock();
   const newIndex: number = previosBlock.index + 1;
   const newTimestamp: number = getNewTimeSamp();
   const newHash: string = Block.calculateBlockHash(
@@ -92,7 +92,7 @@ const isBlockValid = (candidateBlock: Block, previousBlock: Block): boolean => {
 };
 
 const addBlock = (candidateBlock: Block): void => {
-  if (isBlockValid(candidateBlock, getLatestBlock())) {
+  if (isBlockValid(candidateBlock, getLastestBlock())) {
     blockchain.push(candidateBlock);
   }
 };
@@ -102,3 +102,5 @@ createNewBlock("third block");
 createNewBlock("fourth block");
 
 console.log(blockchain);
+
+//출처 노마드 코드
