@@ -16,7 +16,7 @@ console.log(fruits[0]);
 
 // 3. looping
 // for of
-for(let fruit of fruits) {
+for (let fruit of fruits) {
     console.log(fruit);
 }
 

@@ -19,7 +19,7 @@ const rabbit = {
     color: 'white',
     size: null,
     birthDate: new Date(),
-    jump: () => console.log(`${name} can jump`), 
+    jump: () => console.log(`${name} can jump`),
 };
 
 json = JSON.stringify(rabbit);
@@ -56,5 +56,3 @@ console.log(obj.birthDate.getDate()); //이미 string 타입이라 안됨
 //JSON Diff
 //JSON Beautifier
 //JSON Validator
-
-

@@ -18,7 +18,10 @@ function print(person) {
     console.log(person.age);
 }
 
-const person = {name: 'whitecrow', age: 43};
+const person = {
+    name: 'whitecrow',
+    age: 43
+};
 print(person);
 
 //추후에 추가 가능 javascript란...
@@ -46,8 +49,14 @@ function printValue(obj, key) {
 printValue(person, 'name');
 
 // 3. Property value shorthand
-const person1 = { name: 'bob', age: 2 };
-const person2 = { name: 'steve', age: 4 };
+const person1 = {
+    name: 'bob',
+    age: 2
+};
+const person2 = {
+    name: 'steve',
+    age: 4
+};
 //...
 const person4 = makePerson('whitecrow', 43);
 console.log(person4);
@@ -61,6 +70,7 @@ function makePerson(name, age) {
 
 // 4. Constructor Fuction
 const person5 = new Person('whitecrow2222', 43);
+
 function Person(name, age) {
     // this = {};
     this.name = name;
@@ -75,27 +85,30 @@ console.log('hasJob' in person);
 
 // 6. for..in vs for..of
 // for (key in obj)
-for(key in person) {
+for (key in person) {
     console.log(key);
 }
 
 // for(value of iterable)
 const array = [1, 2, 4, 5];
-for(value of array) {
+for (value of array) {
     console.log(value);
 }
 
 // 7. Fun cloning
 //Object.assign(desc, [obje1, obj2, obj3...])
 
-const user = { name: 'whitecrow', age: '43'};
+const user = {
+    name: 'whitecrow',
+    age: '43'
+};
 const user2 = user;
 user2.name = 'corder';
 console.log(user);
 
 // 예전 방법
 const user3 = {};
-for(key in user) {
+for (key in user) {
     user3[key] = user[key];
 }
 console.log(user3);
@@ -105,8 +118,13 @@ const user4 = Object.assign({}, user);
 console.log(user4);
 
 //다른 예제
-const fruit1 = { color: 'red'};
-const fruit2 = { color: 'blue', size: 27}
+const fruit1 = {
+    color: 'red'
+};
+const fruit2 = {
+    color: 'blue',
+    size: 27
+}
 
 const mixfruit = Object.assign({}, fruit1, fruit2);
 console.log(mixfruit);

@@ -7,9 +7,9 @@ class countIncrease {
     }
 
     increase() {
-        this.count++;        
+        this.count++;
         console.log(this.count);
-        if(this.count % 5 === 0) {
+        if (this.count % 5 === 0) {
             this.callbackFn && this.callbackFn(this.count);
         }
     }

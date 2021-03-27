@@ -14,7 +14,7 @@
 
 // make this [5, 4, 3, 2, 1]
 {
-    const array = [1, 2, 3, 4, 5];    
+    const array = [1, 2, 3, 4, 5];
     const result = array.reverse();
     //const result = array.sort((a, b) => b-a);
     console.log(result);
@@ -26,7 +26,7 @@
 {
     const array = [1, 2, 3, 4, 5];
     const result = array.slice(2, 5);
-    
+
     console.log(result);
     console.log(array);
 
@@ -53,7 +53,7 @@ const students = [
 
 // find a student with the score 90
 {
-    console.log(students);    
+    console.log(students);
     const result = students.find((student) => student.score === 90);
     //find => 첫번째 true 값 return
     console.log(result);
@@ -73,24 +73,24 @@ const students = [
 
 // check if there is a student with the score lower than 50
 {
-    
+
     const result = students.some((student) => student.score < 50); //하나라도 some, 모두 every
     console.log(result);
-    
+
 }
 
 // compute student's average score
 {
     const result = students.reduce((prev, curr) => prev + curr.score, 0); //initial 값 0 set
 
-    console.log(result/students.length);
+    console.log(result / students.length);
 }
 
 // make a string containing all the scores
 {
     const result = students
-    .map((student) => student.score)
-    .join();
+        .map((student) => student.score)
+        .join();
 
     console.log(result);
 
@@ -99,9 +99,9 @@ const students = [
 // ascending order
 {
     const result = students
-    .map((student) => student.score)
-    .sort((a, b) => a - b)
-    .join();
+        .map((student) => student.score)
+        .sort((a, b) => a - b)
+        .join();
 
     console.log(result);
 }

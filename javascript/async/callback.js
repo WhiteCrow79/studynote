@@ -19,14 +19,14 @@ function printWithDelay(print, timeout) {
     setTimeout(print, timeout);
 }
 
-printWithDelay(()=> console.log('async callack'), 2000);
+printWithDelay(() => console.log('async callack'), 2000);
 
 //콜백 지옥 : 가독성이 떨어짐, 디버깅 어려움
 
 class UserStorage {
     loginUser(id, password, onSuccess, onError) {
         setTimeout(() => {
-            if(
+            if (
                 (id === 'whitecrow' && password === 'test') ||
                 (id === 'coder' && password === 'test1')
             ) {
@@ -39,8 +39,11 @@ class UserStorage {
 
     getRoles(user, onSuccess, onError) {
         setTimeout(() => {
-            if(user === 'whitecrow') {
-                onSuccess({name: 'whitecrow', role: 'admin'});            
+            if (user === 'whitecrow') {
+                onSuccess({
+                    name: 'whitecrow',
+                    role: 'admin'
+                });
             } else {
                 onError(new Error('no access'));
             }
@@ -55,19 +58,19 @@ const id = 'whitecrow';
 const password = 'test';
 
 userStorage.loginUser(
-    id, 
-    password, 
+    id,
+    password,
     user => {
         userStorage.getRoles(
-            user, 
+            user,
             userWithRole => {
                 console.log(`Hello ${userWithRole.name}, you have a ${userWithRole.role} role`);
-        },
-        error => {
-            console.log(error);
-        }
-    );
-}, 
-error => {
-    console.log(error)
-});
+            },
+            error => {
+                console.log(error);
+            }
+        );
+    },
+    error => {
+        console.log(error)
+    });

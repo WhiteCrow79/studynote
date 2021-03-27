@@ -1,5 +1,5 @@
 function addPlus(a) {
-    return function(b) {
+    return function (b) {
         return a + b;
     }
 }

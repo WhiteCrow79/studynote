@@ -29,7 +29,7 @@ async function getBanana() {
 }
 
 //function pickFruits() {
-async function pickFruits() {    
+async function pickFruits() {
     // return getApple().then(apple => {
     //     return getBanana().then(banana => `${apple} and ${banana}`);
     // });
@@ -53,7 +53,7 @@ pickFruits().then(console.log);
 // 3. useful Promis APIs
 function pickAllFruits() {
     return Promise.all([getApple(), getBanana()])
-    .then(fruits => fruits.join(' and '));
+        .then(fruits => fruits.join(' and '));
 }
 pickAllFruits().then(console.log);
 
