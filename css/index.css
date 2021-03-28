@@ -1,7 +1,7 @@
-h1,
-a {
-  /* border-width: 5px;
-  border-color: red;
-  border-style: solid; */
+h1 {
   border: 5px solid red;
+  padding: 20px;
+  margin: 20px;
+  display: block;
+  width: 100px;
 }
