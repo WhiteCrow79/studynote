@@ -11,12 +11,12 @@
 let json = JSON.stringify(true);
 console.log(json);
 
-json = JSON.stringify(['apple', 'banana']);
+json = JSON.stringify(["apple", "banana"]);
 console.log(json);
 
 const rabbit = {
-    name: 'tory',
-    color: 'white',
+    name: "tory",
+    color: "white",
     size: null,
     birthDate: new Date(),
     jump: () => console.log(`${name} can jump`),
@@ -27,22 +27,21 @@ console.log(json); //함수는 object에 있는 데이터가 아니기 때문에
 
 //원하는 property만 정의
 
-json = JSON.stringify(rabbit, ['name', 'color', 'size']);
+json = JSON.stringify(rabbit, ["name", "color", "size"]);
 console.log(json);
 
 json = JSON.stringify(rabbit, (key, value) => {
     console.log(`key: ${key}, value: ${value}`);
-    return key === 'name' ? 'whitecrow' : value;
+    return key === "name" ? "whitecrow" : value;
 });
 console.log(json);
-
 
 // 2. JSON to Object
 // parse(json)
 json = JSON.stringify(rabbit);
 const obj = JSON.parse(json, (key, value) => {
     console.log(`key: ${key}, value: ${value}`);
-    return key === 'birthDate' ? new Date(value) : value;
+    return key === "birthDate" ? new Date(value) : value;
 });
 console.log(obj);
 //rabbit.jump();
@@ -50,7 +49,6 @@ console.log(obj);
 
 console.log(rabbit.birthDate.getDate());
 console.log(obj.birthDate.getDate()); //이미 string 타입이라 안됨
-
 
 //유용한 site
 //JSON Diff

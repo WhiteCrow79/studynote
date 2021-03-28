@@ -1,14 +1,14 @@
 // array to string
 {
-    const fruits = ['apple', 'banana', 'oragne'];
+    const fruits = ["apple", "banana", "oragne"];
     const result = fruits.join();
     console.log(result);
 }
 
 // string to array
 {
-    const fruits = 'apple,banana,oragne';
-    const result = fruits.split(',', 2);
+    const fruits = "apple,banana,oragne";
+    const result = fruits.split(",", 2);
     console.log(result);
 }
 
@@ -19,7 +19,6 @@
     //const result = array.sort((a, b) => b-a);
     console.log(result);
     console.log(array); //배열 자체를 변경
-
 }
 
 // make new array without the first two elements
@@ -31,7 +30,6 @@
     console.log(array);
 
     //splice는 배열 자체 변경
-
 }
 
 class Student {
@@ -44,11 +42,11 @@ class Student {
 }
 
 const students = [
-    new Student('A', 29, true, 45),
-    new Student('B', 28, false, 80),
-    new Student('C', 30, true, 90),
-    new Student('D', 40, false, 66),
-    new Student('E', 18, true, 88),
+    new Student("A", 29, true, 45),
+    new Student("B", 28, false, 80),
+    new Student("C", 30, true, 90),
+    new Student("D", 40, false, 66),
+    new Student("E", 18, true, 88),
 ];
 
 // find a student with the score 90
@@ -73,10 +71,8 @@ const students = [
 
 // check if there is a student with the score lower than 50
 {
-
     const result = students.some((student) => student.score < 50); //하나라도 some, 모두 every
     console.log(result);
-
 }
 
 // compute student's average score
@@ -88,12 +84,9 @@ const students = [
 
 // make a string containing all the scores
 {
-    const result = students
-        .map((student) => student.score)
-        .join();
+    const result = students.map((student) => student.score).join();
 
     console.log(result);
-
 }
 
 // ascending order

@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Simple synchronous JavaScript example</title>
+    </head>
 
-<head>
-    <meta charset="utf-8">
-    <title>Simple synchronous JavaScript example</title>
-</head>
+    <body>
+        <button>click</button>
+        <script>
+            const btn = document.querySelector("button");
+            btn.addEventListener("click", () => {
+                let myDate;
+                for (let i = 0; i < 100; i++) {
+                    let date = new Date();
+                    myDate = date;
+                }
+                console.log(myDate);
 
-<body>
-    <button>click</button>
-    <script>
-        const btn = document.querySelector('button');
-        btn.addEventListener('click', () => {
-            let myDate;
-            for (let i = 0; i < 100; i++) {
-                let date = new Date();
-                myDate = date;
-            }
-            console.log(myDate);
-
-            let pElem = document.createElement('p');
-            pElem.textContent = 'This is a newly-added paragraph.';
-            document.body.appendChild(pElem);
-        });
-    </script>
-</body>
-
+                let pElem = document.createElement("p");
+                pElem.textContent = "This is a newly-added paragraph.";
+                document.body.appendChild(pElem);
+            });
+        </script>
+    </body>
 </html>

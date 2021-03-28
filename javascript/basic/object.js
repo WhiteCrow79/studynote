@@ -19,8 +19,8 @@ function print(person) {
 }
 
 const person = {
-    name: 'whitecrow',
-    age: 43
+    name: "whitecrow",
+    age: 43,
 };
 print(person);
 
@@ -33,9 +33,9 @@ console.log(person.hasJob);
 
 // 2. Computed properties
 console.log(person.name);
-console.log(person['name']); //키는 항상 string
+console.log(person["name"]); //키는 항상 string
 
-person['hasJob'] = true;
+person["hasJob"] = true;
 console.log(person.hasJob);
 
 //둘을 언제 쓰나
@@ -46,19 +46,19 @@ function printValue(obj, key) {
     console.log(obj[key]); // O
 }
 
-printValue(person, 'name');
+printValue(person, "name");
 
 // 3. Property value shorthand
 const person1 = {
-    name: 'bob',
-    age: 2
+    name: "bob",
+    age: 2,
 };
 const person2 = {
-    name: 'steve',
-    age: 4
+    name: "steve",
+    age: 4,
 };
 //...
-const person4 = makePerson('whitecrow', 43);
+const person4 = makePerson("whitecrow", 43);
 console.log(person4);
 
 function makePerson(name, age) {
@@ -69,7 +69,7 @@ function makePerson(name, age) {
 }
 
 // 4. Constructor Fuction
-const person5 = new Person('whitecrow2222', 43);
+const person5 = new Person("whitecrow2222", 43);
 
 function Person(name, age) {
     // this = {};
@@ -79,9 +79,9 @@ function Person(name, age) {
 }
 
 // 5. check (key in obj)
-console.log('name' in person);
-console.log('age' in person);
-console.log('hasJob' in person);
+console.log("name" in person);
+console.log("age" in person);
+console.log("hasJob" in person);
 
 // 6. for..in vs for..of
 // for (key in obj)
@@ -99,11 +99,11 @@ for (value of array) {
 //Object.assign(desc, [obje1, obj2, obj3...])
 
 const user = {
-    name: 'whitecrow',
-    age: '43'
+    name: "whitecrow",
+    age: "43",
 };
 const user2 = user;
-user2.name = 'corder';
+user2.name = "corder";
 console.log(user);
 
 // 예전 방법
@@ -119,12 +119,12 @@ console.log(user4);
 
 //다른 예제
 const fruit1 = {
-    color: 'red'
+    color: "red",
 };
 const fruit2 = {
-    color: 'blue',
-    size: 27
-}
+    color: "blue",
+    size: 27,
+};
 
 const mixfruit = Object.assign({}, fruit1, fruit2);
 console.log(mixfruit);

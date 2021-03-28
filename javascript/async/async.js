@@ -5,7 +5,7 @@
 // 1. async
 async function fetchUser() {
     // do network request in 10 sec
-    return 'whieteCrow';
+    return "whieteCrow";
 }
 
 const user = fetchUser();
@@ -14,18 +14,18 @@ console.log(user);
 
 // 2. await
 function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 async function getApple() {
     await delay(2000);
     //throw 'apple error';
-    return '사과';
+    return "사과";
 }
 
 async function getBanana() {
     await delay(1000);
-    return '바나나';
+    return "바나나";
 }
 
 //function pickFruits() {
@@ -40,20 +40,20 @@ async function pickFruits() {
     const banana = await bananaPromise;
     // const apple = await getApple(); //2초
     // const banana = await getBanana(); //2초
-    return `${apple} and ${banana}`; //4초 ....      
+    return `${apple} and ${banana}`; //4초 ....
     //}
     //catch {
 
     //}
-
 }
 
 pickFruits().then(console.log);
 
 // 3. useful Promis APIs
 function pickAllFruits() {
-    return Promise.all([getApple(), getBanana()])
-        .then(fruits => fruits.join(' and '));
+    return Promise.all([getApple(), getBanana()]).then((fruits) =>
+        fruits.join(" and ")
+    );
 }
 pickAllFruits().then(console.log);
 
