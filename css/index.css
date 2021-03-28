@@ -1,16 +1,7 @@
-/*
-block level element
-*/
-h1 {
-  border-width: 5px;
-  border-color: red;
-  border-style: solid;
-}
-/*
-inline element
-*/
+h1,
 a {
-  border-width: 5px;
+  /* border-width: 5px;
   border-color: red;
-  border-style: solid;
+  border-style: solid; */
+  border: 5px solid red;
 }
