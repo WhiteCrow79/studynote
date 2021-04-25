@@ -155,4 +155,6 @@ temp/
 typeScript/dist
 
 .DS_Store
+
+javascript/playground
 # End of https://www.toptal.com/developers/gitignore/api/vscode,node,yarn
