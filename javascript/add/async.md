@@ -1,4 +1,4 @@
-# promise
+# promise와 async, await
 
 ## callback
 
@@ -31,4 +31,21 @@ function loadScript(src, callback) {
 loadScript('./js/script.js', function() {
     newFunction();  //정상호출
 });
+``` 
+
+## promise
+
+new Promise에 전달되는 함수는 executor(실행자, 실행 함수)라고 부른다. executor는 new promise가 만들어질 때 자동으로 실행
+```javascript
+let promise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve('done'), 1000);
+});
+
+//resolve 함수는 .then의 첫 번째 함수(인수)를 실행
+promise.then(
+    result => alert(result), //1초 후 'done'출력
+    error => alert(error) //실행되지 않음
+);
+
 ```
+

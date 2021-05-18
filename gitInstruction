@@ -8,6 +8,7 @@ git commit -m "message" : create version
 git commit -am "add message 한번에"
 git log : show version
 git log --status
+git log --oneline
 git diff : show change
 git log -p
 git checkout
@@ -38,3 +39,16 @@ git push -u origin master
 -global user
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
+
+--tag
+
+git tag v0.1.0-notDB
+git push origin v0.1.0-notDB
+
+--tag delete
+
+git push origin :v0.1.0-notDB
+
+--tag local 삭제
+
+git tag -d v0.1.0-notDB
