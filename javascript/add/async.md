@@ -49,3 +49,61 @@ promise.then(
 
 ```
 
+## async와 await
+
+### async
+
+async와 await라는 특별한 문법을 사용하면 프라미스를 좀 더 편하게 사용할 수 있다.
+
+```javascript
+async function f() {
+    return Promise.resolve(1);
+}
+
+f().then(alert);
+```
+
+### await
+await은 async 함수 안에서만 동작
+
+```javascript
+async function f() {
+    
+    let promise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve('완료'), 1000);
+    });
+
+    let result = await promise; // 프라미스가 이행될 때까지 기다림
+
+    alert(result); // '완료'
+}
+
+```
+async 클래스 메서드
+
+```javascript
+class Waiter {
+    async wait() {
+        return await Promise.resolve(1);
+    }
+}
+
+new Waiter()
+.wait()
+.then(alert); //1
+```
+
+### 에러 핸들링
+프라미스가 정상적으로 이행되면 await promise는 프라미스 객체의 result에 저장된 값을 반환. 반면 프라미스가 거부되면 마치 throw문을 작성한 것처럼 에러가 던져짐
+
+```javascript
+async function f() {
+    try {
+        let response = await fetch('url~');
+    } catch (err) {
+        alert(err);
+    }
+}
+
+f();
+```
