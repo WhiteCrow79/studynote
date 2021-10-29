@@ -84,4 +84,7 @@ ssh server-node <<EOF
         exit                                                                                           
 EOF
 ```
+
+### 기타
+>synology docker ubuntu의 rc 자동실행 설정이 되질 않아 다른 방법으로 해결<br>ex)update-rc start.sh defaults >> /root/.bashrc
  
