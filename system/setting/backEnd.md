@@ -91,3 +91,13 @@ server {
 
 > 더 이상의 설명은 생략한다.
 
+### ssh
+```ubuntu
+ssh whitecrownode@whitecrow79.synology.me -p4522
+```
+
+### scp
+
+```ubuntu
+scp -P 4522 whitecrownode@whitecrow79.synology.me:/home/whitecrownode/node-back/app/.env /Users/whitecrow/dev/node-back/app
+```
