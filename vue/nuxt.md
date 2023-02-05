@@ -32,3 +32,10 @@
 ### Nuxt.js의 등장 배경
 
 - Angula, React, Vue SPA 삼대장들이 출시되고 나서, SPA의 단점들을 극복하고자 많은 노력들이 있었지만, 정통 SSR(MPA) 방식의 장점들을 완변하게 커버하기란 불가능하였고 이를 극복하기 위하여 Next.js(React 기반), Nuxt.js(Vue 기반) 등의 프레임워크가 등장하였다.
+
+### Nuxt.js 시작하기
+
+```linux
+yarn create nuxt-app <project-name>
+npm init nuxt-app <project-name>
+```
